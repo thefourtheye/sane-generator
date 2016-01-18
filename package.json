@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/thefourtheye/sane-generator/issues"
   },
-  "homepage": "https://github.com/thefourtheye/sane-generator"
+  "homepage": "https://github.com/thefourtheye/sane-generator",
+  "devDependencies": {
+    "eslint": "^1.10.3"
+  }
 }
