@@ -1,0 +1,23 @@
+{
+  "name": "sane-generator",
+  "version": "0.0.1",
+  "description": "Sane Generators for Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thefourtheye/sane-generator.git"
+  },
+  "keywords": [
+    "generator",
+    "generators"
+  ],
+  "author": "Sakthipriyan Vairamani <thechargingvolcano@gmail.com> (thefourtheye)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/thefourtheye/sane-generator/issues"
+  },
+  "homepage": "https://github.com/thefourtheye/sane-generator"
+}
