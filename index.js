@@ -1,9 +1,9 @@
 function returnFunction(originalReturn, genObject) {
   return function(arg) {
-    return arguments.length !== 0 ? originalReturn.call(genObject, arg) || {
+    return arguments.length !== 0 ? originalReturn.call(genObject, arg) : {
       done: false
     };
-  }
+  };
 }
 
 function SaneGenerator(genObject) {
