@@ -35,4 +35,4 @@ if ('value' in returnValue) {
 }
 assert.deepStrictEqual(returnValue, {
   'done': true
-})
+});
