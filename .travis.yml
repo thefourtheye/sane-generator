@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "0.10"
+  - "0.12"
+  - "1"
+  - "2"
+  - "3"
+  - "4"
+  - "5"
+  - "node"
+after_success:
+  - ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha tests/**/*.js
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
