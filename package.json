@@ -4,7 +4,7 @@
   "description": "Sane Generators for Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "npm run lint && node tests/",
+    "test": "npm run lint && node_modules/.bin/mocha tests/index.js",
     "lint": "node_modules/.bin/eslint index.js tests/**/*.js"
   },
   "repository": {
@@ -22,6 +22,10 @@
   },
   "homepage": "https://github.com/thefourtheye/sane-generator",
   "devDependencies": {
-    "eslint": "^1.10.3"
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.6",
+    "eslint": "^1.10.3",
+    "istanbul": "^0.4.2",
+    "mocha": "^2.4.5"
   }
 }
