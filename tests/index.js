@@ -1,5 +1,6 @@
 var Mocha = require('mocha');
 var path = require('path');
+require('babel-polyfill');
 var hasGenerator = (function() {
   try {
     return !!eval('(function*() {}).return');
@@ -14,6 +15,7 @@ var mocha = new Mocha({
   reporter: 'list'
 });
 
+mocha.addFile(path.join('tests-es5', 'tests.js'));
 if (hasGenerator) {
   mocha.addFile(path.join('tests', 'tests.js'));
 }
