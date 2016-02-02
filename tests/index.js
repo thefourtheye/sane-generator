@@ -1,3 +1,5 @@
+var Mocha = require('mocha');
+var path = require('path');
 var hasGenerator = (function() {
   try {
     return !!eval('(function*() {}).return');
@@ -6,8 +8,19 @@ var hasGenerator = (function() {
   }
 }());
 
-if (!hasGenerator) {
-  return console.log('Generators are not available. Skipping tests..');
+// Instantiate a Mocha instance.
+var mocha = new Mocha({
+  ui: 'bdd',
+  reporter: 'list'
+});
+
+if (hasGenerator) {
+  mocha.addFile(path.join('tests', 'tests.js'));
 }
 
-require('./tests');
+// Run the tests.
+mocha.run(function(failures) {
+  process.on('exit', function() {
+    process.exit(failures);
+  });
+});
