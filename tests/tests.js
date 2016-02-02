@@ -11,7 +11,7 @@ function* NumberGenerator() {
 describe('Generator Object should', function() {
 
   it('return the first valid element', function() {
-    expect(NumberGenerator().next()).to.be.deepEqual({
+    expect(NumberGenerator().next()).to.be.deep.equal({
       'value': 0,
       'done': false
     });
@@ -19,10 +19,10 @@ describe('Generator Object should', function() {
 
   it('close the iterator Object if return is called on it', function() {
     var numbers = NumberGenerator();
-    expect(numbers.return()).to.be.deepEqual({
+    expect(numbers.return()).to.be.deep.equal({
       'done': true
     });
-    expect(numbers.next()).to.be.deepEqual({
+    expect(numbers.next()).to.be.deep.equal({
       'done': true
     });
   });
