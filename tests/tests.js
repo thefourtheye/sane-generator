@@ -1,4 +1,6 @@
-var assert = require('assert');
+'use strict';
+var expect = require('chai').expect;
+var SaneGenerator = require('../');
 
 function* NumberGenerator() {
   for (var i = 0; i < 10; i += 1) {
@@ -6,33 +8,23 @@ function* NumberGenerator() {
   }
 }
 
-var numbers = NumberGenerator();
-assert.deepStrictEqual(numbers.next(), {
-  'value': 0,
-  'done': false
-});
+describe('Generator Object should', function() {
 
-// Check if empty `return` closes the iterator
-assert.deepStrictEqual(numbers.return(), {
-  'done': false
-});
+  it('return the first valid element', function() {
+    expect(NumberGenerator().next()).to.be.deepEqual({
+      'value': 0,
+      'done': false
+    });
+  });
 
-assert.deepStrictEqual(numbers.next(), {
-  'value': 1,
-  'done': false
-});
+  it('close the iterator Object if return is called on it', function() {
+    var numbers = NumberGenerator();
+    expect(numbers.return()).to.be.deepEqual({
+      'done': true
+    });
+    expect(numbers.next()).to.be.deepEqual({
+      'done': true
+    });
+  });
 
-// Check if `return` with a parameter really closes the iterator
-assert.deepStrictEqual(numbers.return(undefined), {
-  'value': undefined,
-  'done': true
-});
-
-var returnValue = numbers.next();
-if ('value' in returnValue) {
-  assert.strictEqual(returnValue.value, undefined);
-  delete returnValue.value;
-}
-assert.deepStrictEqual(returnValue, {
-  'done': true
 });
