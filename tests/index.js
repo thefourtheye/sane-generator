@@ -1,5 +1,6 @@
 var Mocha = require('mocha');
 var path = require('path');
+require('babel-polyfill');
 var hasGenerator = (function() {
   try {
     return !!eval('(function*() {}).return');
