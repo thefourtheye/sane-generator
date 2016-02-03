@@ -14,7 +14,7 @@ var mocha = new Mocha({
   reporter: 'list'
 });
 
-mocha.addFile(path.join('tests-es5', 'tests.js'));
+mocha.addFile(path.join('tests', 'tests-es5.js'));
 if (hasGenerator) {
   mocha.addFile(path.join('tests', 'tests.js'));
 }
