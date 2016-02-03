@@ -20,9 +20,11 @@ describe('Generator Object should', function() {
   it('close the iterator Object if return is called on it', function() {
     var numbers = NumberGenerator();
     expect(numbers.return()).to.be.deep.equal({
+      'value': undefined,
       'done': true
     });
     expect(numbers.next()).to.be.deep.equal({
+      'value': undefined,
       'done': true
     });
   });
