@@ -1,7 +1,7 @@
 {
   "name": "sane-generator",
   "version": "0.0.1",
-  "description": "Sane Generators for Node.js",
+  "description": "Sane Generators for ECMAScript 6",
   "main": "index.js",
   "scripts": {
     "test": "./babel-commands.sh",
