@@ -112,4 +112,13 @@ describe('Sane Generator Object should', function() {
       'done': false
     });
   });
+
+  it('not affect the object if `return` is not a function', function() {
+    var numbers = {
+      return: 1
+    };
+    var saneNumbers = SaneGenerator(numbers);
+    expect(numbers).to.be.deep.equal(saneNumbers);
+    expect(numbers).to.be.equal(saneNumbers);
+  });
 });
