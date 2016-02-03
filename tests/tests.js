@@ -121,4 +121,16 @@ describe('Sane Generator Object should', function() {
     expect(numbers).to.be.deep.equal(saneNumbers);
     expect(numbers).to.be.equal(saneNumbers);
   });
+
+  it('close the iterator when exhausted with a loop', function() {
+    var numbers = SaneGenerator(NumberGenerator());
+    for (var value of numbers) {
+      value = value; // just to keep linter happy
+    }
+    expect(numbers.next()).to.be.deep.equal({
+      'value': undefined,
+      'done': true
+    });
+  });
+
 });
