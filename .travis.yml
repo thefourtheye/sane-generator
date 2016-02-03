@@ -9,5 +9,5 @@ node_js:
   - "5"
   - "node"
 after_success:
-  - ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha tests/**/*.js
+  - ./node_modules/.bin/istanbul cover -x "tests-es5/**.js" ./node_modules/.bin/_mocha tests/index.js
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
