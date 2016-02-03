@@ -1,6 +1,5 @@
 var Mocha = require('mocha');
 var path = require('path');
-require('babel-polyfill');
 var hasGenerator = (function() {
   try {
     return !!eval('(function*() {}).return');
@@ -21,8 +20,8 @@ if (hasGenerator) {
 }
 
 // Run the tests.
-mocha.run(function(failures) {
-  process.on('exit', function() {
-    process.exit(failures);
+mocha.run(function() {
+  process.on('exit', function(exitCode) {
+    process.exit(exitCode);
   });
 });
