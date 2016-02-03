@@ -11,7 +11,7 @@ var hasGenerator = (function() {
 
 // Instantiate a Mocha instance.
 var mocha = new Mocha({
-  ui: 'bdd',
+  ui: 'tdd',
   reporter: 'list'
 });
 
