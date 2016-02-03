@@ -23,10 +23,93 @@ describe('Generator Object should', function() {
       'value': undefined,
       'done': true
     });
+
     expect(numbers.next()).to.be.deep.equal({
       'value': undefined,
       'done': true
     });
   });
 
+  it('close the iterator Object even if return is called with undefined', function() {
+    var numbers = NumberGenerator();
+    expect(numbers.next()).to.be.deep.equal({
+      'value': 0,
+      'done': false
+    });
+
+    expect(numbers.return(undefined)).to.be.deep.equal({
+      'value': undefined,
+      'done': true
+    });
+
+    expect(numbers.next()).to.be.deep.equal({
+      'value': undefined,
+      'done': true
+    });
+  });
+
+  it('close the iterator while looped with for..of', function() {
+    var numbers = NumberGenerator();
+    for (var value of numbers) {
+      if (value === 3) {
+        break;
+      }
+    }
+    expect(numbers.next()).to.be.deep.equal({
+      'value': undefined,
+      'done': true
+    });
+  });
+
+});
+
+describe('Sane Generator Object should', function() {
+
+  it('not close the iterator Object even if return is called with undefined', function() {
+    var numbers = SaneGenerator(NumberGenerator());
+    expect(numbers.next()).to.be.deep.equal({
+      'value': 0,
+      'done': false
+    });
+
+    expect(numbers.return()).to.be.deep.equal({
+      'done': false
+    });
+
+    expect(numbers.next()).to.be.deep.equal({
+      'value': 1,
+      'done': false
+    });
+  });
+
+  it('close the iterator even if return is called with undefined', function() {
+    var numbers = SaneGenerator(NumberGenerator());
+    expect(numbers.next()).to.be.deep.equal({
+      'value': 0,
+      'done': false
+    });
+
+    expect(numbers.return(undefined)).to.be.deep.equal({
+      'value': undefined,
+      'done': true
+    });
+
+    expect(numbers.next()).to.be.deep.equal({
+      'value': undefined,
+      'done': true
+    });
+  });
+
+  it('not close the iterator while looped with for..of', function() {
+    var numbers = SaneGenerator(NumberGenerator());
+    for (var value of numbers) {
+      if (value === 3) {
+        break;
+      }
+    }
+    expect(numbers.next()).to.be.deep.equal({
+      'value': 4,
+      'done': false
+    });
+  });
 });
