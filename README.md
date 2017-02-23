@@ -92,7 +92,7 @@ var numbers = SaneGenerator(NumberGenerator());
 console.log(numbers.next());
 // {"value": 0, "done": false}
 console.log(numbers.next());
-// {"value": 0, "done": false}
+// {"value": 1, "done": false}
 console.log(numbers.return(undefined));              // call `return` with any value
 // {"done": true}
 console.log(numbers.next());
